@@ -47,5 +47,30 @@
     <document_schema type='http://indivo.org/vocab/xml/documents#EncryptedDocument' />
     <document_schema type='http://indivo.org/vocab/xml/documents#Genotype' />
     <document_schema type='http://indivo.org/vocab/xml/documents#Models' />
+    <document_schema type='http://indivo.org/vocab/documentrels#scheduleItem' />
+    <document_schema type='http://indivo.org/vocab/documentrels#scheduledAction' />
+    <document_schema type='http://indivo.org/vocab/documentrels#adherenceItem' />
+    <document_schema type='http://indivo.org/vocab/documentrels#adherenceResult' />
+    <document_schema type='http://indivo.org/vocab/documentrels#medicationFill' />
+    <document_schema type='http://indivo.org/vocab/documentrels#healthActionSchedule' />
+    <document_schema type='http://indivo.org/vocab/documentrels#triggeredHealthActionResult' />
+    <document_schema type='http://indivo.org/vocab/documentrels#measurement' />
+    <document_schema type='http://indivo.org/vocab/documentrels#unscheduledResult' />
+    <document_schema type='http://indivo.org/vocab/documentrels#titrationDecision' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#HealthActionSchedule' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#HealthActionOccurrence' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#Device' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#AdherenceItem' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#HealthMeasurement' />
+    <document_schema type='http://indivo.org/vocab/xml/documents/healthActionPlan#HealthActionPlan' />
+    <document_schema type='http://indivo.org/vocab/xml/documents/healthActionResult#HealthActionResult' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#Medication' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#MedicationOrder' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#MedicationFill' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#MedicationAdministration' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#MedicationSchedule' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#MedicationScheduleItem' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#EquipmentScheduleItem' />
+    <document_schema type='http://indivo.org/vocab/xml/documents#VideoMessage' />
   </document_schemas>
 </bootstrap>
