@@ -14,6 +14,7 @@ from indivo.fields import AddressField, NameField, TelephoneField
 from indivo.lib.iso8601 import parse_utc_date 
 from indivo.lib.rdf import PatientGraph
 from indivo.serializers.json import IndivoJSONEncoder
+from indivo.lib import utils
 
 FIELDS = ('bday', 
           'email', 
@@ -125,9 +126,14 @@ class Demographics(BaseModel):
     
     def as_xml(self):
         """XML string representation of Demographics instance"""
+#        from pydev import pydevd; pydevd.settrace('revivan.media.mit.edu', port=51234, stdoutToServer=True, stderrToServer=True)
+        return utils.render_template_raw("demographics", {'demographics': self})
+    
+    def as_sdmx(self):
+        """SDML/XML string representation of Demographics instance"""
         root = serializers.serialize("indivo_xml", [self], fields=FIELDS)
         return etree.tostring(root)
-    
+
     def as_rdf(self):
         """RDF/XML string representation of Demographics instance"""
         graph = PatientGraph(self.record)

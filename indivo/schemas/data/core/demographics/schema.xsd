@@ -56,9 +56,9 @@
         <xs:element name="ethnicity" type="xs:string" minOccurs="0" />
         <xs:element name="preferredLanguage" type="xs:string" minOccurs="0" />
         <xs:element name="race" type="xs:string" minOccurs="0" />
-        <xs:element name="name" type="indivo:Name" minOccurs="1"/>
-        <xs:element name="telephone" type="indivo:Telephone" minOccurs="0" maxOccurs="2" />
-        <xs:element name="address" type="indivo:Address" minOccurs="0" maxOccurs="1" />
+        <xs:element name="Name" type="indivo:Name" minOccurs="1"/>
+        <xs:element name="Telephone" type="indivo:Telephone" minOccurs="0" maxOccurs="2" />
+        <xs:element name="Address" type="indivo:Address" minOccurs="0" maxOccurs="1" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

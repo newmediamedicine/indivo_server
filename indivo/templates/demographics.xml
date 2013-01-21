@@ -1,0 +1,39 @@
+{% load template_utils %}
+{% spaceless %}
+<Demographics xmlns="http://indivo.org/vocab/xml/documents#">
+  {% if demographics.bday %}<dateOfBirth>{{ demographics.bday|format_iso8601_date }}</dateOfBirth>{% endif %}
+  <gender>{{ demographics.gender }}</gender>
+  {% if demographics.email %}<email>{{ demographics.email }}</email>{% endif %}
+  {% if demographics.ethnicity %}<ethnicity>{{ demographics.ethnicity }}</ethnicity>{% endif %}
+  {% if demographics.preferred_language %}<preferredLanguage>{{ demographics.preferred_language }}</preferredLanguage>{% endif %}
+  {% if demographics.race %}<race>{{ demographics.race }}</race>{% endif %}
+  <Name>
+    <familyName>{{ demographics.name_family }}</familyName>
+    <givenName>{{ demographics.name_given }}</givenName>
+    {% if demographics.name_middle %}<middleName>{{ demographics.name_middle }}</middleName>{% endif %}
+    {% if demographics.name_prefix %}<prefix>{{ demographics.name_prefix }}</prefix>{% endif %}
+    {% if demographics.name_suffix %}<suffix>{{ demographics.name_suffix }}</suffix>{% endif %}
+  </Name>
+<!--
+  <Telephone>
+    <type>{{ demographics.telephone_ }}</type>
+    <number>555-5555</number>
+    <preferred>true</preferred>
+  </Telephone>
+  <Telephone>
+    <type>c</type>
+    <number>555-6666</number>
+  </Telephone>
+  <Address>
+    <country>USA</country>
+    <city>Gotham</city>
+    <postalCode>90210</postalCode>
+    <region>secret</region>
+    <street>1007 Mountain Drive</street>
+  </Address>
+-->
+
+</Demographics>
+{% endspaceless %}
+
+
