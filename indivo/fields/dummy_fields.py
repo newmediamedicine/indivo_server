@@ -36,6 +36,32 @@ class CodedValueField(DummyField):
         '_system': (models.CharField, {'max_length':255, 'null':True}),
         }
     
+class CollaboRhythmCodedValueField(DummyField):
+    """ A field for representing coded data elements for CollaboRhythm, based on the Indivo 1.0 CodedValue field.
+
+    Creating a CodedValueField named 'value', for example, will (under the hood) create thee fields:
+
+    * ``value_text``, the human-readable title of the element
+    * ``value_value``, the system-specific identifier that represents the element (i.e. an RXNorm CUI)
+    * ``value_abbrev``
+    * ``value_type``, the coding system used to represent the element
+
+    When describing instances of your model (either when defining a
+    :ref:`transform output <transform-output-types>` or when referencing fields using
+    :ref:`the Indivo Query API <queryable-fields>`), you must refer to these field names, not the original
+    ``value`` field name.
+
+    TODO: move to a "contrib" folder for contributed fields
+
+    """
+
+    replacements = {
+        '_text': (models.CharField, {'max_length':255, 'null':True}),
+        '_type': (models.CharField, {'max_length':255, 'null':True}),
+        '_value': (models.CharField, {'max_length':255, 'null':True}),
+        '_abbrev': (models.CharField, {'max_length':255, 'null':True}),
+        }
+
 class ValueAndUnitField(DummyField):
     """ A field for representing data elements with both a value and a unit. 
 
@@ -54,6 +80,28 @@ class ValueAndUnitField(DummyField):
     replacements = {
         '_value': (models.CharField, {'max_length':255, 'null':True}), # consider making this a float?
         '_unit': (models.CharField, {'max_length':255, 'null':True}),
+        }
+
+class CollaboRhythmValueAndUnitField(DummyField):
+    """ A field for representing data elements with both a value and a unit.
+
+    Creating a ValueAndUnitField named 'frequency', for example, will (under the hood) create the fields:
+
+    * ``frequency_value``, the value of the element
+    * ``frequency_unit``, the units in which the value is measured
+
+    When describing instances of your model (either when defining a
+    :ref:`transform output <transform-output-types>` or when referencing fields using
+    :ref:`the Indivo Query API <queryable-fields>`), you must refer to these field names, not the original
+    ``frequency`` field name.
+
+    TODO: move to a "contrib" folder for contributed fields
+    """
+
+    replacements = {
+        '_value': (models.DecimalField, {'null':True, 'decimal_places':10, 'max_digits':22}),
+        '_textValue': (models.CharField, {'max_length':255, 'null':True}),
+        '_unit': (CollaboRhythmCodedValueField, {}),
         }
 
 class ValueRangeField(DummyField):

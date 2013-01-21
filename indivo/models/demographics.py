@@ -126,7 +126,6 @@ class Demographics(BaseModel):
     
     def as_xml(self):
         """XML string representation of Demographics instance"""
-#        from pydev import pydevd; pydevd.settrace('revivan.media.mit.edu', port=51234, stdoutToServer=True, stderrToServer=True)
         return utils.render_template_raw("demographics", {'demographics': self})
     
     def as_sdmx(self):

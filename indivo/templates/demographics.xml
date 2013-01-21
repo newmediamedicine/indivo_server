@@ -18,14 +18,14 @@
   <Telephone>
     {% if demographics.tel_1_type %}<type>{{ demographics.tel_1_type }}</type>{% endif %}
     <number>{{ demographics.tel_1_number }}</number>
-    {% if demographics.tel_1_preferred_p %}<preferred>{{ demographics.tel_1_preferred_p }}</preferred>{% endif %}
+    {% if demographics.tel_1_preferred_p %}<preferred>{{ demographics.tel_1_preferred_p|lower }}</preferred>{% endif %}
   </Telephone>
   {% endif %}
   {% if demographics.tel_2_number %}
   <Telephone>
     {% if demographics.tel_2_type %}<type>{{ demographics.tel_2_type }}</type>{% endif %}
     <number>{{ demographics.tel_2_number }}</number>
-    {% if demographics.tel_2_preferred_p %}<preferred>{{ demographics.tel_2_preferred_p }}</preferred>{% endif %}
+    {% if demographics.tel_2_preferred_p %}<preferred>{{ demographics.tel_2_preferred_p|lower }}</preferred>{% endif %}
   </Telephone>
   {% endif %}
   {% if demographics.adr_country or demographics.adr_city or demographics.adr_postalcode or demographics.adr_region or demographics.adr_street %}

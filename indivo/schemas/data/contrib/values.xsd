@@ -12,17 +12,17 @@
 
       <!-- technically this schema allows a range with neither min nor max, which doesn't mean much, but no big deal -->
 
-      <xs:element name="unit" type="indivo:CodedValue" minOccurs="0" maxOccurs="1" />
+      <xs:element name="unit" type="indivo:CollaboRhythmCodedValue" minOccurs="0" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
 
 
   <!-- an ordinal, i.e. "2+" is coded using textValue -->
-  <xs:complexType name="ValueAndUnit">
+  <xs:complexType name="CollaboRhythmValueAndUnit">
     <xs:sequence>
       <xs:element name="value" type="xs:double" minOccurs="0" maxOccurs="1" />
       <xs:element name="textValue" type="xs:string" minOccurs="0" maxOccurs="1" />
-      <xs:element name="unit" type="indivo:CodedValue" minOccurs="0" maxOccurs="1" />
+      <xs:element name="unit" type="indivo:CollaboRhythmCodedValue" minOccurs="0" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
 
@@ -30,7 +30,7 @@
   <xs:complexType name="Result" abstract="true">
     <xs:sequence>
       <!-- HL7 defines flag types -->
-      <xs:element name="flag" type="indivo:CodedValue" minOccurs="0" maxOccurs="1" />	
+      <xs:element name="flag" type="indivo:CollaboRhythmCodedValue" minOccurs="0" maxOccurs="1" />	
     </xs:sequence>
   </xs:complexType>
 
@@ -38,7 +38,7 @@
     <xs:complexContent>
       <xs:extension base="indivo:Result">
 	<xs:sequence>
-	  <xs:element name="valueAndUnit" type="indivo:ValueAndUnit" minOccurs="1" maxOccurs="1" />
+	  <xs:element name="valueAndUnit" type="indivo:CollaboRhythmValueAndUnit" minOccurs="1" maxOccurs="1" />
 	  
 	  <xs:element name="normalRange" type="indivo:Range" minOccurs="0" maxOccurs="1" />
 	  
@@ -74,7 +74,7 @@
 
   <xs:complexType name="ValueOrRange">
     <xs:choice>
-      <xs:element name="value" type="indivo:ValueAndUnit" />
+      <xs:element name="value" type="indivo:CollaboRhythmValueAndUnit" />
       <xs:element name="range" type="indivo:Range" />
     </xs:choice>
   </xs:complexType>

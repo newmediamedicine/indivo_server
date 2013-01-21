@@ -23,6 +23,9 @@ SERIALIZATION_FORMAT_MAP = {
     'application/rdf+xml': 'rdf',
 }
 
+# SMART format
+SMART_FORMAT = 'application/rdf+xml'
+
 def serialize(cls, format, query, record=None, carenet=None):
     """Serialize an indivo.lib.query to the requested format 
     
@@ -46,7 +49,10 @@ def serialize(cls, format, query, record=None, carenet=None):
     result_count = query.trc
     method = "to_" + SERIALIZATION_FORMAT_MAP[format]
     if hasattr(cls, method):
-        return getattr(cls, method)(queryset, result_count, record, carenet)
+        if not format == SMART_FORMAT:
+            return getattr(cls, method)(query, record, carenet)
+        else:
+            return getattr(cls, method)(queryset, result_count, record, carenet)
     else:
         raise ValueError("format not supported")
 
@@ -125,7 +131,7 @@ def _generic_list(request, query_options, data_model, record=None, carenet=None,
   """
   # check requested format
   if not response_format:
-      response_format = request.GET.get("response_format", 'application/json')
+      response_format = request.GET.get("response_format", 'application/xml')
   
   if not SERIALIZATION_FORMAT_MAP.has_key(response_format):
       # unsupported format
