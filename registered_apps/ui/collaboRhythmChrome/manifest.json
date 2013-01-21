@@ -1,0 +1,9 @@
+{
+    "name": "CollaboRhythm Chrome App",
+    "description" : "CollaboRhythm UI App",
+    "author" : "John Moore, Scott Gilroy. MIT Media Lab",
+    "id" : "collaboRhythmChrome@apps.indivo.org",
+    "version" : "2.0.0",
+    "indivo_version": "2.0.0",
+    "ui_app": true
+}
