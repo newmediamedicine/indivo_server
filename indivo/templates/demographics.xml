@@ -14,25 +14,29 @@
     {% if demographics.name_prefix %}<prefix>{{ demographics.name_prefix }}</prefix>{% endif %}
     {% if demographics.name_suffix %}<suffix>{{ demographics.name_suffix }}</suffix>{% endif %}
   </Name>
-<!--
+  {% if demographics.tel_1_number %}
   <Telephone>
-    <type>{{ demographics.telephone_ }}</type>
-    <number>555-5555</number>
-    <preferred>true</preferred>
+    {% if demographics.tel_1_type %}<type>{{ demographics.tel_1_type }}</type>{% endif %}
+    <number>{{ demographics.tel_1_number }}</number>
+    {% if demographics.tel_1_preferred_p %}<preferred>{{ demographics.tel_1_preferred_p }}</preferred>{% endif %}
   </Telephone>
+  {% endif %}
+  {% if demographics.tel_2_number %}
   <Telephone>
-    <type>c</type>
-    <number>555-6666</number>
+    {% if demographics.tel_2_type %}<type>{{ demographics.tel_2_type }}</type>{% endif %}
+    <number>{{ demographics.tel_2_number }}</number>
+    {% if demographics.tel_2_preferred_p %}<preferred>{{ demographics.tel_2_preferred_p }}</preferred>{% endif %}
   </Telephone>
+  {% endif %}
+  {% if demographics.adr_country or demographics.adr_city or demographics.adr_postalcode or demographics.adr_region or demographics.adr_street %}
   <Address>
-    <country>USA</country>
-    <city>Gotham</city>
-    <postalCode>90210</postalCode>
-    <region>secret</region>
-    <street>1007 Mountain Drive</street>
+    {% if demographics.adr_country %}<country>{{ demographics.adr_country }}</country>{% endif %}
+    {% if demographics.adr_city %}<city>{{ demographics.adr_city }}</city>{% endif %}
+    {% if demographics.adr_postalcode %}<postalCode>{{ demographics.adr_postalcode }}</postalCode>{% endif %}
+    {% if demographics.adr_region %}<region>{{ demographics.adr_region }}</region>{% endif %}
+    {% if demographics.adr_street %}<street>{{ demographics.adr_street }}</street>{% endif %}
   </Address>
--->
-
+  {% endif %}
 </Demographics>
 {% endspaceless %}
 
