@@ -5,15 +5,15 @@ from indivo.lib.rdf import PatientGraph
 from indivo.validators import ValueInSetValidator, ExactValueValidator, NonNullValidator
 from indivo.lib import utils
 
-class VitalSignSerializers(DataModelSerializers):
+class CollaboRhythmVitalSignSerializers(DataModelSerializers):
 
     def to_xml(query, record=None, carenet=None):
         if not record:
             record = carenet.record
 
-        return query.render("reports/contrib/VitalSign.xml")
+        return query.render("reports/contrib/CollaboRhythmVitalSign.xml")
 
-class VitalSignOptions(DataModelOptions):
-    model_class_name = 'VitalSign'
-    serializers = VitalSignSerializers
+class CollaboRhythmVitalSignOptions(DataModelOptions):
+    model_class_name = 'CollaboRhythmVitalSign'
+    serializers = CollaboRhythmVitalSignSerializers
   
