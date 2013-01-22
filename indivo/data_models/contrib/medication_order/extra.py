@@ -10,8 +10,7 @@ class MedicationOrderSerializers(DataModelSerializers):
         if not record:
             record = carenet.record
 
-        return query.render("reports/medicationorder") #utils.render_template_raw("medicationorder", {'fobj': queryset})
-#        return utils.render_template_raw("reports/medicationorder", {'fobj': query.results[0]})
+        return query.render("reports/medicationorder.xml") 
 
 class MedicationOrderOptions(DataModelOptions):
     model_class_name = 'MedicationOrder'
