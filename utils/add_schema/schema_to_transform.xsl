@@ -5,7 +5,7 @@
   <xsl:template match="xs:schema">
     <xsl:variable name="name" select="xs:element/@name"/>
     <xslout:stylesheet version="1.0" xmlns:indivodoc="http://indivo.org/vocab/xml/documents#">
-      <xslout:template match="/">
+      <xslout:template match="indivodoc:{$name}">
         <Models>
           <Model name="{$name}"><xsl:text>&#10;</xsl:text>
             <xsl:for-each select="xs:complexType[@name=$name]/xs:sequence/xs:element">
