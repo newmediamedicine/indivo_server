@@ -1,0 +1,70 @@
+
+{% load template_utils %}
+<MedicationAdministration xmlns="http://indivo.org/vocab/xml/documents#">
+      
+            <name
+            {% if fobj.name_type %} type="{{ fobj.name_type }}"{% endif %}
+            {% if fobj.name_value %} value="{{ fobj.name_value }}"{% endif %}
+            {% if fobj.name_abbrev %} abbrev="{{ fobj.name_abbrev }}"{% endif %}
+            >
+            {% if fobj.name_text %}{{ fobj.name_text }}{% endif %}
+            </name>
+            
+
+  <reportedBy>{{ fobj.reportedBy }}</reportedBy>
+  
+
+  <dateReported>{{ fobj.dateReported|format_iso8601_datetime }}</dateReported>
+  
+  {% if fobj.dateAdministered %}
+  <dateAdministered>{{ fobj.dateAdministered|format_iso8601_datetime }}</dateAdministered>
+  {% endif %}
+
+              {% if fobj.amountAdministered_value or
+              fobj.amountAdministered_textValue%}
+            
+            <amountAdministered>
+
+            {% if fobj.amountAdministered_value %} <value>{{ fobj.amountAdministered_value }}</value>{% endif %}
+            {% if fobj.amountAdministered_value %} <textValue>{{ fobj.amountAdministered_textValue }}</textValue>{% endif %}
+            {% if fobj.amountAdministered_unit %}
+
+              
+              <unit
+              {% if fobj.amountAdministered_unit_type %} type="{{ fobj.amountAdministered_unit_type }}"{% endif %}
+              {% if fobj.amountAdministered_unit_value %} value="{{ fobj.amountAdministered_unit_value }}"{% endif %}
+              {% if fobj.amountAdministered_unit_abbrev %} abbrev="{{ fobj.amountAdministered_unit_abbrev }}"{% endif %}
+              >
+              {% if fobj.amountAdministered_text %}{{ fobj.amountAdministered_text }}{% endif %}
+              <unit/>
+              {% endif %}
+
+            {% endif %}
+            </amountAdministered>
+            {% endif %}
+
+              {% if fobj.amountRemaining_value or
+              fobj.amountRemaining_textValue%}
+            
+            <amountRemaining>
+
+            {% if fobj.amountRemaining_value %} <value>{{ fobj.amountRemaining_value }}</value>{% endif %}
+            {% if fobj.amountRemaining_value %} <textValue>{{ fobj.amountRemaining_textValue }}</textValue>{% endif %}
+            {% if fobj.amountRemaining_unit %}
+
+              
+              <unit
+              {% if fobj.amountRemaining_unit_type %} type="{{ fobj.amountRemaining_unit_type }}"{% endif %}
+              {% if fobj.amountRemaining_unit_value %} value="{{ fobj.amountRemaining_unit_value }}"{% endif %}
+              {% if fobj.amountRemaining_unit_abbrev %} abbrev="{{ fobj.amountRemaining_unit_abbrev }}"{% endif %}
+              >
+              {% if fobj.amountRemaining_text %}{{ fobj.amountRemaining_text }}{% endif %}
+              <unit/>
+              {% endif %}
+
+            {% endif %}
+            </amountRemaining>
+            {% endif %}
+
+</MedicationAdministration>
+  

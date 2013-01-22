@@ -1,0 +1,6 @@
+
+{% load template_utils %}
+<VitalSign xmlns="http://indivo.org/vocab/xml/documents#">
+      
+</VitalSign>
+  

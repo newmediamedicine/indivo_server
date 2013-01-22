@@ -1,0 +1,18 @@
+
+{% load template_utils %}
+<HealthActionOccurrence xmlns="http://indivo.org/vocab/xml/documents#">
+      
+            <name
+            {% if fobj.name_type %} type="{{ fobj.name_type }}"{% endif %}
+            {% if fobj.name_value %} value="{{ fobj.name_value }}"{% endif %}
+            {% if fobj.name_abbrev %} abbrev="{{ fobj.name_abbrev }}"{% endif %}
+            >
+            {% if fobj.name_text %}{{ fobj.name_text }}{% endif %}
+            </name>
+            
+  {% if fobj.recurrenceIndex %}
+  <recurrenceIndex>{{ fobj.recurrenceIndex }}</recurrenceIndex>
+  {% endif %}
+
+</HealthActionOccurrence>
+  
