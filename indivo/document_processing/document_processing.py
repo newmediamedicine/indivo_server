@@ -184,10 +184,12 @@ class DocumentProcessing(object):
     try:
       if self.transform_func:
         return self.transform_func(self.content_etree)
-    except ValueError:
-      raise
-    except Exception:
-      pass
+    except ValueError as e1:
+      print e1
+      raise e1
+    except Exception as e2:
+      print e2
+      raise e2
     
     # return None if we don't have a transform func,
     # or if the transform didn't work
