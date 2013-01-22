@@ -1,0 +1,67 @@
+
+{% load template_utils %}
+<MedicationFill xmlns="http://indivo.org/vocab/xml/documents#">
+      
+            <name
+            {% if fobj.name_type %} type="{{ fobj.name_type }}"{% endif %}
+            {% if fobj.name_value %} value="{{ fobj.name_value }}"{% endif %}
+            {% if fobj.name_abbrev %} abbrev="{{ fobj.name_abbrev }}"{% endif %}
+            >
+            {% if fobj.name_text %}{{ fobj.name_text }}{% endif %}
+            </name>
+            
+
+  <filledBy>{{ fobj.filledBy }}</filledBy>
+  
+
+  <dateFilled>{{ fobj.dateFilled|format_iso8601_datetime }}</dateFilled>
+  
+
+            <amountFilled>
+
+            {% if fobj.amountFilled_value %} <value>{{ fobj.amountFilled_value }}</value>{% endif %}
+            {% if fobj.amountFilled_value %} <textValue>{{ fobj.amountFilled_textValue }}</textValue>{% endif %}
+            {% if fobj.amountFilled_unit %}
+
+              
+              <unit
+              {% if fobj.amountFilled_unit_type %} type="{{ fobj.amountFilled_unit_type }}"{% endif %}
+              {% if fobj.amountFilled_unit_value %} value="{{ fobj.amountFilled_unit_value }}"{% endif %}
+              {% if fobj.amountFilled_unit_abbrev %} abbrev="{{ fobj.amountFilled_unit_abbrev }}"{% endif %}
+              >
+              {% if fobj.amountFilled_text %}{{ fobj.amountFilled_text }}{% endif %}
+              <unit/>
+              
+
+            {% endif %}
+            </amountFilled>
+            
+
+              {% if fobj.ndc_text or
+                fobj.ndc_type or
+                fobj.ndc_value or
+                fobj.ndc_abbrev %}
+            
+            <ndc
+            {% if fobj.ndc_type %} type="{{ fobj.ndc_type }}"{% endif %}
+            {% if fobj.ndc_value %} value="{{ fobj.ndc_value }}"{% endif %}
+            {% if fobj.ndc_abbrev %} abbrev="{{ fobj.ndc_abbrev }}"{% endif %}
+            >
+            {% if fobj.ndc_text %}{{ fobj.ndc_text }}{% endif %}
+            </ndc>
+            {% endif %}
+  {% if fobj.fillSequenceNumber %}
+  <fillSequenceNumber>{{ fobj.fillSequenceNumber }}</fillSequenceNumber>
+  {% endif %}
+  {% if fobj.lotNumber %}
+  <lotNumber>{{ fobj.lotNumber }}</lotNumber>
+  {% endif %}
+  {% if fobj.refillsRemaining %}
+  <refillsRemaining>{{ fobj.refillsRemaining }}</refillsRemaining>
+  {% endif %}
+  {% if fobj.instructions %}
+  <instructions>{{ fobj.instructions }}</instructions>
+  {% endif %}
+
+</MedicationFill>
+  

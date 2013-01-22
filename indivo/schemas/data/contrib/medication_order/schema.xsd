@@ -21,7 +21,6 @@
 		   elementFormDefault="qualified">
 
 	<xs:include schemaLocation="../codes.xsd"/>
-	<xs:include schemaLocation="../../common/provider.xsd"/>
 	<xs:include schemaLocation="../values.xsd"/>
 
 	<xs:complexType name="MedicationOrder">

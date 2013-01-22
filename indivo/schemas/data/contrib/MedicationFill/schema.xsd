@@ -20,17 +20,16 @@
 		   xmlns:indivo="http://indivo.org/vocab/xml/documents#"
 		   elementFormDefault="qualified">
 
-	<xs:include schemaLocation="codes.xsd"/>
-	<xs:include schemaLocation="provider.xsd"/>
-	<xs:include schemaLocation="values.xsd"/>
+  <xs:include schemaLocation="../codes.xsd"/>
+  <xs:include schemaLocation="../values.xsd"/>
 
-	<xs:complexType name="MedicationFill">
+  <xs:complexType name="MedicationFill">
 		<xs:sequence>
-			<xs:element name="name" type="indivo:CodedValue" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="indivo:CollaboRhythmCodedValue" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="filledBy" type="xs:string" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="dateFilled" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="amountFilled" type="indivo:ValueAndUnit" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="ndc" type="indivo:CodedValue" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="amountFilled" type="indivo:CollaboRhythmValueAndUnit" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ndc" type="indivo:CollaboRhythmCodedValue" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="fillSequenceNumber" type="xs:integer" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="lotNumber" type="xs:integer" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="refillsRemaining" type="xs:integer" minOccurs="0" maxOccurs="1"/>

@@ -11,15 +11,13 @@ class <xsl:value-of select="$name"/>(Fact):
 <xsl:for-each select="xs:complexType[@name=$name]/xs:sequence/xs:element">
     <xsl:text>    </xsl:text>
     <xsl:value-of select="@name"/> = <xsl:choose>
-      <xsl:when test="(@type = 'indivo:CollaboRhythmCodedValue' or @type = 'indivo:CodedValue') and @minOccurs='0'">CollaboRhythmCodedValueField(null=True)</xsl:when>
-      <xsl:when test="(@type = 'indivo:CollaboRhythmCodedValue' or @type = 'indivo:CodedValue')">CollaboRhythmCodedValueField()</xsl:when>
-      <xsl:when test="(@type = 'indivo:CollaboRhythmValueAndUnit' or @type = 'indivo:ValueAndUnit') and @minOccurs='0'">CollaboRhythmValueAndUnitField(null=True)</xsl:when>
-      <xsl:when test="(@type = 'indivo:CollaboRhythmValueAndUnit' or @type = 'indivo:ValueAndUnit')">CollaboRhythmValueAndUnitField()</xsl:when>
-      <xsl:when test="(@type = 'xs:dateTime')">models.DateField()</xsl:when>
+      <xsl:when test="(@type = 'indivo:CollaboRhythmCodedValue' or @type = 'indivo:CodedValue')">CollaboRhythmCodedValueField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
+      <xsl:when test="(@type = 'indivo:CollaboRhythmValueAndUnit' or @type = 'indivo:ValueAndUnit')">CollaboRhythmValueAndUnitField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
+      <xsl:when test="(@type = 'xs:dateTime')">models.DateField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
       <xsl:when test="(@type = 'xs:boolean') and @minOccurs='0'">models.NullBooleanField()</xsl:when>
       <xsl:when test="(@type = 'xs:boolean')">models.BooleanField()</xsl:when>
       <xsl:when test="(@type = 'xs:integer')">models.IntegerField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
-      <xsl:otherwise>models.CharField()</xsl:otherwise>
+      <xsl:otherwise>models.CharField(max_length=255<xsl:if test="@minOccurs='0'">, null=True</xsl:if>)</xsl:otherwise>
     </xsl:choose><xsl:text>&#10;</xsl:text>
     </xsl:for-each>
   </xsl:template>

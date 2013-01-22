@@ -104,7 +104,7 @@ modelPath = "indivo/data_models/contrib/" + options.schema + "/model.py"
 extraPath = "indivo/data_models/contrib/" + options.schema + "/extra.py"
 
 transformPath = "indivo/schemas/data/contrib/" + options.schema + "/transform.xsl"
-templatePath = "indivo/reports/" + options.schema + ".xml"
+templatePath = "indivo/templates/reports/" + options.schema + ".xml"
 
 examplePath = "indivo/schemas/data/contrib/" + options.schema + "/" + options.schema + ".xml"
 

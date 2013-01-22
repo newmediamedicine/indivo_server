@@ -12,10 +12,10 @@ from indivo.lib import utils
 class <xsl:value-of select="$name"/>Serializers(DataModelSerializers):
 
     def to_xml(query, record=None, carenet=None):
-    if not record:
-    record = carenet.record
+        if not record:
+            record = carenet.record
 
-    return query.render("reports/<xsl:value-of select="$name"/>")
+        return query.render("reports/<xsl:value-of select="$name"/>.xml")
 
 class <xsl:value-of select="$name"/>Options(DataModelOptions):
     model_class_name = '<xsl:value-of select="$name"/>'
