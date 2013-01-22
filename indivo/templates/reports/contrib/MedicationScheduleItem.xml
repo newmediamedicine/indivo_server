@@ -1,0 +1,53 @@
+
+{% load template_utils %}
+<MedicationScheduleItem xmlns="http://indivo.org/vocab/xml/documents#">
+      
+            <name
+            {% if fobj.name_type %} type="{{ fobj.name_type }}"{% endif %}
+            {% if fobj.name_value %} value="{{ fobj.name_value }}"{% endif %}
+            {% if fobj.name_abbrev %} abbrev="{{ fobj.name_abbrev }}"{% endif %}
+            >
+            {% if fobj.name_text %}{{ fobj.name_text }}{% endif %}
+            </name>
+            
+
+  <scheduledBy>{{ fobj.scheduledBy }}</scheduledBy>
+  
+
+  <dateScheduled>{{ fobj.dateScheduled|format_iso8601_datetime }}</dateScheduled>
+  
+
+  <dateStart>{{ fobj.dateStart|format_iso8601_datetime }}</dateStart>
+  
+  {% if fobj.dateEnd %}
+  <dateEnd>{{ fobj.dateEnd|format_iso8601_datetime }}</dateEnd>
+  {% endif %}
+  {% if fobj.recurrenceRule %}
+  <recurrenceRule>{{ fobj.recurrenceRule }}</recurrenceRule>
+  {% endif %}
+
+            <dose>
+
+            {% if fobj.dose_value %} <value>{{ fobj.dose_value }}</value>{% endif %}
+            {% if fobj.dose_value %} <textValue>{{ fobj.dose_textValue }}</textValue>{% endif %}
+            {% if fobj.dose_unit %}
+
+              
+              <unit
+              {% if fobj.dose_unit_type %} type="{{ fobj.dose_unit_type }}"{% endif %}
+              {% if fobj.dose_unit_value %} value="{{ fobj.dose_unit_value }}"{% endif %}
+              {% if fobj.dose_unit_abbrev %} abbrev="{{ fobj.dose_unit_abbrev }}"{% endif %}
+              >
+              {% if fobj.dose_text %}{{ fobj.dose_text }}{% endif %}
+              <unit/>
+              
+
+            {% endif %}
+            </dose>
+            
+  {% if fobj.instructions %}
+  <instructions>{{ fobj.instructions }}</instructions>
+  {% endif %}
+
+</MedicationScheduleItem>
+  
