@@ -15,7 +15,7 @@ class <xsl:value-of select="$name"/>Serializers(DataModelSerializers):
         if not record:
             record = carenet.record
 
-        return query.render("reports/<xsl:value-of select="$name"/>.xml")
+        return query.render("reports/contrib/<xsl:value-of select="$name"/>.xml")
 
 class <xsl:value-of select="$name"/>Options(DataModelOptions):
     model_class_name = '<xsl:value-of select="$name"/>'

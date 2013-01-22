@@ -10,7 +10,7 @@ class MedicationFillSerializers(DataModelSerializers):
         if not record:
             record = carenet.record
 
-        return query.render("reports/MedicationFill.xml")
+        return query.render("reports/contrib/MedicationFill.xml")
 
 class MedicationFillOptions(DataModelOptions):
     model_class_name = 'MedicationFill'

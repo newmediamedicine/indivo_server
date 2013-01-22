@@ -10,7 +10,7 @@ class MedicationOrderSerializers(DataModelSerializers):
         if not record:
             record = carenet.record
 
-        return query.render("reports/medicationorder.xml") 
+        return query.render("reports/contrib/MedicationOrder.xml")
 
 class MedicationOrderOptions(DataModelOptions):
     model_class_name = 'MedicationOrder'
