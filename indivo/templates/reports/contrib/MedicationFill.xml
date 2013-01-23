@@ -37,10 +37,7 @@
             </amountFilled>
             
 
-              {% if fobj.ndc_text or
-                fobj.ndc_type or
-                fobj.ndc_value or
-                fobj.ndc_abbrev %}
+              {% if fobj.ndc_text or fobj.ndc_type or fobj.ndc_value or fobj.ndc_abbrev %}
             
             <ndc
             {% if fobj.ndc_type %} type="{{ fobj.ndc_type }}"{% endif %}
