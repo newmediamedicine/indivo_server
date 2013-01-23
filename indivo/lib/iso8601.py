@@ -26,14 +26,12 @@ def parse_utc_date(datestring):
 
 def format_utc_date(date, date_only=False):
     try:
-        # TODO: get the correct date format working correctly again
-        return str(date)
         if isinstance(date, time):
             return date.strftime(ISO8601_UTC_TIME_FORMAT)
         elif date_only:
             return date.strftime(ISO8601_UTC_DATE_FORMAT)
         else:
-            if date.microsecond:
+            if hasattr(date, 'microsecond') and date.microsecond:
                 return date.strftime(ISO8601_UTC_DATETIME_FORMAT_MICRO)
             else:
                 return date.strftime(ISO8601_UTC_DATETIME_FORMAT)

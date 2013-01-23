@@ -26,23 +26,27 @@
   <indication>{{ fobj.indication }}</indication>
   {% endif %}
 
-  {% if fobj.amountOrdered_value or fobj.amountOrdered_textValue%}
-    <amountOrdered>
-      {% if fobj.amountOrdered_value %}<value>{{ fobj.amountOrdered_value }}</value>{% endif %}
-      {% if fobj.amountOrdered_textValue %}<textValue>{{ fobj.amountOrdered_textValue }}</textValue>{% endif %}
-      {% if fobj.amountOrdered_unit_text or fobj.amountOrdered_unit_type or fobj.amountOrdered_unit_value or fobj.amountOrdered_unit_abbrev %}
-        <unit
-          {% if fobj.amountOrdered_unit_type %} type="{{ fobj.amountOrdered_unit_type }}"{% endif %}
-          {% if fobj.amountOrdered_unit_value %} value="{{ fobj.amountOrdered_unit_value }}"{% endif %}
-          {% if fobj.amountOrdered_unit_abbrev %} abbrev="{{ fobj.amountOrdered_unit_abbrev }}"{% endif %}
-        >
-        {% if fobj.amountOrdered_unit_text %}{{ fobj.amountOrdered_unit_text }}{% endif %}
-        <unit/>
-      {% endif %}
+              {% if fobj.amountOrdered_value or fobj.amountOrdered_textValue%}
+            
+            <amountOrdered>
 
-    {% endif %}
-    </amountOrdered>
-    {% endif %}
+            {% if fobj.amountOrdered_value %} <value>{{ fobj.amountOrdered_value }}</value>{% endif %}
+            {% if fobj.amountOrdered_textValue %} <textValue>{{ fobj.amountOrdered_textValue }}</textValue>{% endif %}
+            {% if fobj.amountOrdered_unit_text or fobj.amountOrdered_unit_type or fobj.amountOrdered_unit_value or fobj.amountOrdered_unit_abbrev %}
+
+              
+              <unit
+              {% if fobj.amountOrdered_unit_type %} type="{{ fobj.amountOrdered_unit_type }}"{% endif %}
+              {% if fobj.amountOrdered_unit_value %} value="{{ fobj.amountOrdered_unit_value }}"{% endif %}
+              {% if fobj.amountOrdered_unit_abbrev %} abbrev="{{ fobj.amountOrdered_unit_abbrev }}"{% endif %}
+              >
+              {% if fobj.amountOrdered_unit_text %}{{ fobj.amountOrdered_unit_text }}{% endif %}
+              <unit/>
+              
+
+            {% endif %}
+            </amountOrdered>
+            {% endif %}
   {% if fobj.refills %}
   <refills>{{ fobj.refills }}</refills>
   {% endif %}

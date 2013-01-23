@@ -10,13 +10,15 @@
             {% if fobj.name_text %}{{ fobj.name_text }}{% endif %}
             </name>
             
-
+  {% if fobj.filledBy %}
   <filledBy>{{ fobj.filledBy }}</filledBy>
-  
-
+  {% endif %}
+  {% if fobj.dateFilled %}
   <dateFilled>{{ fobj.dateFilled|format_iso8601_datetime }}</dateFilled>
-  
+  {% endif %}
 
+              {% if fobj.amountFilled_value or fobj.amountFilled_textValue%}
+            
             <amountFilled>
 
             {% if fobj.amountFilled_value %} <value>{{ fobj.amountFilled_value }}</value>{% endif %}
@@ -35,9 +37,9 @@
 
             {% endif %}
             </amountFilled>
-            
+            {% endif %}
 
-              {% if fobj.ndc_text or fobj.ndc_type or fobj.ndc_value or fobj.ndc_abbrev %}
+            {% if fobj.ndc_text or fobj.ndc_type or fobj.ndc_value or fobj.ndc_abbrev %}
             
             <ndc
             {% if fobj.ndc_type %} type="{{ fobj.ndc_type }}"{% endif %}

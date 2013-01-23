@@ -11,10 +11,7 @@
         <xsl:choose>
           <xsl:when test="(@type = 'indivo:CollaboRhythmCodedValue' or @type = 'indivo:CodedValue')">
             <xsl:if test="@minOccurs='0'">
-              {% if fobj.<xsl:value-of select="$childName"/>_text or
-                fobj.<xsl:value-of select="$childName"/>_type or
-                fobj.<xsl:value-of select="$childName"/>_value or
-                fobj.<xsl:value-of select="$childName"/>_abbrev %}
+            {% if fobj.<xsl:value-of select="$childName"/>_text or fobj.<xsl:value-of select="$childName"/>_type or fobj.<xsl:value-of select="$childName"/>_value or fobj.<xsl:value-of select="$childName"/>_abbrev %}
             </xsl:if>
             &lt;<xsl:value-of select="$childName"/>
             {% if fobj.<xsl:value-of select="$childName"/>_type %} type="{{ fobj.<xsl:value-of select="$childName"/>_type }}"{% endif %}
@@ -27,8 +24,7 @@
           </xsl:when>
           <xsl:when test="(@type = 'indivo:CollaboRhythmValueAndUnit' or @type = 'indivo:ValueAndUnit')">
             <xsl:if test="@minOccurs='0'">
-              {% if fobj.<xsl:value-of select="$childName"/>_value or
-              fobj.<xsl:value-of select="$childName"/>_textValue%}
+              {% if fobj.<xsl:value-of select="$childName"/>_value or fobj.<xsl:value-of select="$childName"/>_textValue%}
             </xsl:if>
             &lt;<xsl:value-of select="$childName"/>&gt;
 
@@ -37,10 +33,7 @@
             {% if fobj.<xsl:value-of select="$childName"/>_unit_text or fobj.<xsl:value-of select="$childName"/>_unit_type or fobj.<xsl:value-of select="$childName"/>_unit_value or fobj.<xsl:value-of select="$childName"/>_unit_abbrev %}
 
               <xsl:if test="unit/@minOccurs='0'">
-                {% if fobj.<xsl:value-of select="$childName"/>_unit_text or
-                fobj.<xsl:value-of select="$childName"/>_unit_type or
-                fobj.<xsl:value-of select="$childName"/>_unit_value or
-                fobj.<xsl:value-of select="$childName"/>_unit_abbrev %}
+              {% if fobj.<xsl:value-of select="$childName"/>_unit_text or fobj.<xsl:value-of select="$childName"/>_unit_type or fobj.<xsl:value-of select="$childName"/>_unit_value or fobj.<xsl:value-of select="$childName"/>_unit_abbrev %}
               </xsl:if>
               &lt;unit
               {% if fobj.<xsl:value-of select="$childName"/>_unit_type %} type="{{ fobj.<xsl:value-of select="$childName"/>_unit_type }}"{% endif %}
@@ -49,7 +42,7 @@
               &gt;
               {% if fobj.<xsl:value-of select="$childName"/>_unit_text %}{{ fobj.<xsl:value-of select="$childName"/>_unit_text }}{% endif %}
               &lt;unit/&gt;
-              <xsl:if test="@minOccurs='0'">{% endif %}</xsl:if>
+              <xsl:if test="uint/@minOccurs='0'">{% endif %}</xsl:if>
 
             {% endif %}
             &lt;/<xsl:value-of select="$childName"/>&gt;
@@ -57,7 +50,7 @@
           </xsl:when>
           <xsl:when test="@type = 'indivo:RecurrenceRule'">
             <xsl:if test="@minOccurs='0'">
-              {% if fobj.<xsl:value-of select="$childName"/>_frequency %}
+            {% if fobj.<xsl:value-of select="$childName"/>_frequency %}
             </xsl:if>
             &lt;<xsl:value-of select="$childName"/>&gt;
             &lt;frequency&gt;{{ fobj.<xsl:value-of select="$childName"/>_frequency }}&lt;/value&gt;

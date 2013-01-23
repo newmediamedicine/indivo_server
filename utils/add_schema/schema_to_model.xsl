@@ -14,7 +14,8 @@ class <xsl:value-of select="$name"/>(Fact):
       <xsl:when test="@type = 'indivo:CollaboRhythmCodedValue' or @type = 'indivo:CodedValue'">CollaboRhythmCodedValueField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
       <xsl:when test="@type = 'indivo:CollaboRhythmValueAndUnit' or @type = 'indivo:ValueAndUnit'">CollaboRhythmValueAndUnitField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
       <xsl:when test="@type = 'indivo:RecurrenceRule'">RecurrenceRuleField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
-      <xsl:when test="@type = 'xs:dateTime'">models.DateField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
+      <xsl:when test="@type = 'xs:date'">models.DateField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
+      <xsl:when test="@type = 'xs:dateTime'">models.DateTimeField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
       <xsl:when test="@type = 'xs:boolean' and @minOccurs='0'">models.NullBooleanField()</xsl:when>
       <xsl:when test="@type = 'xs:boolean'">models.BooleanField()</xsl:when>
       <xsl:when test="@type = 'xs:integer'">models.IntegerField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>

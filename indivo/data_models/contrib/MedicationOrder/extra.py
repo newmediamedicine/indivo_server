@@ -1,3 +1,4 @@
+
 from indivo.serializers import DataModelSerializers
 from indivo.data_models.options import DataModelOptions
 from indivo.lib.rdf import PatientGraph
@@ -15,3 +16,4 @@ class MedicationOrderSerializers(DataModelSerializers):
 class MedicationOrderOptions(DataModelOptions):
     model_class_name = 'MedicationOrder'
     serializers = MedicationOrderSerializers
+  
