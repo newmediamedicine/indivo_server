@@ -8,7 +8,7 @@
 <Field name="dateScheduled"><xsl:value-of select="indivodoc:dateScheduled/text()"/></Field>
 <Field name="dateStart"><xsl:value-of select="indivodoc:dateStart/text()"/></Field>
 <xsl:if test="indivodoc:dateEnd"><Field name="dateEnd"><xsl:value-of select="indivodoc:dateEnd/text()"/></Field></xsl:if>
-<xsl:if test="indivodoc:recurrenceRule"><Field name="recurrenceRule"><xsl:value-of select="indivodoc:recurrenceRule/text()"/></Field></xsl:if>
+<xsl:if test="indivodoc:recurrenceRule"><Field name="recurrenceRule_frequency"><xsl:value-of select="indivodoc:recurrenceRule/frequency"/></Field><xsl:if test="indivodoc:recurrenceRule/interval"><Field name="recurrenceRule_interval"><xsl:value-of select="indivodoc:recurrenceRule/interval"/></Field></xsl:if><xsl:if test="indivodoc:recurrenceRule/count"><Field name="recurrenceRule_count"><xsl:value-of select="indivodoc:recurrenceRule/count"/></Field></xsl:if></xsl:if>
 <xsl:if test="indivodoc:instructions"><Field name="instructions"><xsl:value-of select="indivodoc:instructions/text()"/></Field></xsl:if>
 </Model>
     </Models>

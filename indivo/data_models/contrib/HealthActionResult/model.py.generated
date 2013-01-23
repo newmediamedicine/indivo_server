@@ -3,6 +3,9 @@ from indivo.models import Fact
 from django.db import models
 from indivo.fields import CollaboRhythmCodedValueField, CollaboRhythmValueAndUnitField, RecurrenceRuleField, CodedValueField, ValueAndUnitField, PharmacyField, ProviderField
 
-class HealthActionOccurrence(Fact):
+class HealthActionResult(Fact):
     name = CollaboRhythmCodedValueField()
-    recurrenceIndex = models.IntegerField(null=True)
+    planType = models.CharField(max_length=255, null=True)
+    reportedBy = models.CharField(max_length=255, null=True)
+    dateReported = models.DateTimeField(null=True)
+    actions = models.CharField(max_length=255, null=True)

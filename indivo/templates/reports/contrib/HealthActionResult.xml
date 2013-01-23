@@ -1,0 +1,27 @@
+
+{% load template_utils %}
+<HealthActionResult xmlns="http://indivo.org/vocab/xml/documents#">
+      
+            <name
+            {% if fobj.name_type %} type="{{ fobj.name_type }}"{% endif %}
+            {% if fobj.name_value %} value="{{ fobj.name_value }}"{% endif %}
+            {% if fobj.name_abbrev %} abbrev="{{ fobj.name_abbrev }}"{% endif %}
+            >
+            {% if fobj.name_text %}{{ fobj.name_text }}{% endif %}
+            </name>
+            
+  {% if fobj.planType %}
+  <planType>{{ fobj.planType }}</planType>
+  {% endif %}
+  {% if fobj.reportedBy %}
+  <reportedBy>{{ fobj.reportedBy }}</reportedBy>
+  {% endif %}
+  {% if fobj.dateReported %}
+  <dateReported>{{ fobj.dateReported|format_iso8601_datetime }}</dateReported>
+  {% endif %}
+  {% if fobj.actions %}
+  <actions>{{ fobj.actions }}</actions>
+  {% endif %}
+
+</HealthActionResult>
+  
