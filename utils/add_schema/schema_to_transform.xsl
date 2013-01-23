@@ -84,6 +84,28 @@
                   </xslout:if>
                 </xsl:when>
 
+                <xsl:when test="@type = 'indivo:RecurrenceRule' and @minOccurs='0'">
+                  <xslout:if test="indivodoc:{$childName}">
+                    <Field name="{$childName}_frequency"><xslout:value-of select='indivodoc:{$childName}/frequency'/></Field>
+                    <xslout:if test="indivodoc:{$childName}/interval">
+                      <Field name="{$childName}_interval"><xslout:value-of select='indivodoc:{$childName}/interval' /></Field>
+                    </xslout:if>
+                    <xslout:if test="indivodoc:{$childName}/count">
+                      <Field name="{$childName}_count"><xslout:value-of select='indivodoc:{$childName}/count' /></Field>
+                    </xslout:if>
+                  </xslout:if>
+                </xsl:when>
+
+                <xsl:when test="@type = 'indivo:RecurrenceRule'">
+                  <Field name="{$childName}_frequency"><xslout:value-of select='indivodoc:{$childName}/frequency'/></Field>
+                  <xslout:if test="indivodoc:{$childName}/interval">
+                    <Field name="{$childName}_interval"><xslout:value-of select='indivodoc:{$childName}/interval' /></Field>
+                  </xslout:if>
+                  <xslout:if test="indivodoc:{$childName}/count">
+                    <Field name="{$childName}_count"><xslout:value-of select='indivodoc:{$childName}/count' /></Field>
+                  </xslout:if>
+                </xsl:when>
+
                 <xsl:when test="@minOccurs='0'">
                   <xslout:if test="indivodoc:{$childName}">
                     <Field name="{$childName}"><xslout:value-of select='indivodoc:{$childName}/text()'/></Field>

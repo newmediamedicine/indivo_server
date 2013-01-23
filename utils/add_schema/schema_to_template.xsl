@@ -33,8 +33,8 @@
             &lt;<xsl:value-of select="$childName"/>&gt;
 
             {% if fobj.<xsl:value-of select="$childName"/>_value %} &lt;value&gt;{{ fobj.<xsl:value-of select="$childName"/>_value }}&lt;/value&gt;{% endif %}
-            {% if fobj.<xsl:value-of select="$childName"/>_value %} &lt;textValue&gt;{{ fobj.<xsl:value-of select="$childName"/>_textValue }}&lt;/textValue&gt;{% endif %}
-            {% if fobj.<xsl:value-of select="$childName"/>_unit %}
+            {% if fobj.<xsl:value-of select="$childName"/>_textValue %} &lt;textValue&gt;{{ fobj.<xsl:value-of select="$childName"/>_textValue }}&lt;/textValue&gt;{% endif %}
+            {% if fobj.<xsl:value-of select="$childName"/>_unit_text or fobj.<xsl:value-of select="$childName"/>_unit_type or fobj.<xsl:value-of select="$childName"/>_unit_value or fobj.<xsl:value-of select="$childName"/>_unit_abbrev %}
 
               <xsl:if test="unit/@minOccurs='0'">
                 {% if fobj.<xsl:value-of select="$childName"/>_unit_text or
@@ -47,11 +47,22 @@
               {% if fobj.<xsl:value-of select="$childName"/>_unit_value %} value="{{ fobj.<xsl:value-of select="$childName"/>_unit_value }}"{% endif %}
               {% if fobj.<xsl:value-of select="$childName"/>_unit_abbrev %} abbrev="{{ fobj.<xsl:value-of select="$childName"/>_unit_abbrev }}"{% endif %}
               &gt;
-              {% if fobj.<xsl:value-of select="$childName"/>_text %}{{ fobj.<xsl:value-of select="$childName"/>_text }}{% endif %}
+              {% if fobj.<xsl:value-of select="$childName"/>_unit_text %}{{ fobj.<xsl:value-of select="$childName"/>_unit_text }}{% endif %}
               &lt;unit/&gt;
               <xsl:if test="@minOccurs='0'">{% endif %}</xsl:if>
 
             {% endif %}
+            &lt;/<xsl:value-of select="$childName"/>&gt;
+            <xsl:if test="@minOccurs='0'">{% endif %}</xsl:if>
+          </xsl:when>
+          <xsl:when test="@type = 'indivo:RecurrenceRule'">
+            <xsl:if test="@minOccurs='0'">
+              {% if fobj.<xsl:value-of select="$childName"/>_frequency %}
+            </xsl:if>
+            &lt;<xsl:value-of select="$childName"/>&gt;
+            &lt;frequency&gt;{{ fobj.<xsl:value-of select="$childName"/>_frequency }}&lt;/value&gt;
+            {% if fobj.<xsl:value-of select="$childName"/>_interval %} &lt;interval&gt;{{ fobj.<xsl:value-of select="$childName"/>_interval }}&lt;/interval&gt;{% endif %}
+            {% if fobj.<xsl:value-of select="$childName"/>_count %} &lt;count&gt;{{ fobj.<xsl:value-of select="$childName"/>_count }}&lt;/count&gt;{% endif %}
             &lt;/<xsl:value-of select="$childName"/>&gt;
             <xsl:if test="@minOccurs='0'">{% endif %}</xsl:if>
           </xsl:when>

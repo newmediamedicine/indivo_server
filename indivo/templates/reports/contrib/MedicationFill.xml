@@ -20,8 +20,8 @@
             <amountFilled>
 
             {% if fobj.amountFilled_value %} <value>{{ fobj.amountFilled_value }}</value>{% endif %}
-            {% if fobj.amountFilled_value %} <textValue>{{ fobj.amountFilled_textValue }}</textValue>{% endif %}
-            {% if fobj.amountFilled_unit %}
+            {% if fobj.amountFilled_textValue %} <textValue>{{ fobj.amountFilled_textValue }}</textValue>{% endif %}
+            {% if fobj.amountFilled_unit_text or fobj.amountFilled_unit_type or fobj.amountFilled_unit_value or fobj.amountFilled_unit_abbrev %}
 
               
               <unit
@@ -29,7 +29,7 @@
               {% if fobj.amountFilled_unit_value %} value="{{ fobj.amountFilled_unit_value }}"{% endif %}
               {% if fobj.amountFilled_unit_abbrev %} abbrev="{{ fobj.amountFilled_unit_abbrev }}"{% endif %}
               >
-              {% if fobj.amountFilled_text %}{{ fobj.amountFilled_text }}{% endif %}
+              {% if fobj.amountFilled_unit_text %}{{ fobj.amountFilled_unit_text }}{% endif %}
               <unit/>
               
 

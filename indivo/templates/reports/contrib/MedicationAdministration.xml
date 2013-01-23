@@ -26,8 +26,8 @@
             <amountAdministered>
 
             {% if fobj.amountAdministered_value %} <value>{{ fobj.amountAdministered_value }}</value>{% endif %}
-            {% if fobj.amountAdministered_value %} <textValue>{{ fobj.amountAdministered_textValue }}</textValue>{% endif %}
-            {% if fobj.amountAdministered_unit %}
+            {% if fobj.amountAdministered_textValue %} <textValue>{{ fobj.amountAdministered_textValue }}</textValue>{% endif %}
+            {% if fobj.amountAdministered_unit_text or fobj.amountAdministered_unit_type or fobj.amountAdministered_unit_value or fobj.amountAdministered_unit_abbrev %}
 
               
               <unit
@@ -35,7 +35,7 @@
               {% if fobj.amountAdministered_unit_value %} value="{{ fobj.amountAdministered_unit_value }}"{% endif %}
               {% if fobj.amountAdministered_unit_abbrev %} abbrev="{{ fobj.amountAdministered_unit_abbrev }}"{% endif %}
               >
-              {% if fobj.amountAdministered_text %}{{ fobj.amountAdministered_text }}{% endif %}
+              {% if fobj.amountAdministered_unit_text %}{{ fobj.amountAdministered_unit_text }}{% endif %}
               <unit/>
               {% endif %}
 
@@ -49,8 +49,8 @@
             <amountRemaining>
 
             {% if fobj.amountRemaining_value %} <value>{{ fobj.amountRemaining_value }}</value>{% endif %}
-            {% if fobj.amountRemaining_value %} <textValue>{{ fobj.amountRemaining_textValue }}</textValue>{% endif %}
-            {% if fobj.amountRemaining_unit %}
+            {% if fobj.amountRemaining_textValue %} <textValue>{{ fobj.amountRemaining_textValue }}</textValue>{% endif %}
+            {% if fobj.amountRemaining_unit_text or fobj.amountRemaining_unit_type or fobj.amountRemaining_unit_value or fobj.amountRemaining_unit_abbrev %}
 
               
               <unit
@@ -58,7 +58,7 @@
               {% if fobj.amountRemaining_unit_value %} value="{{ fobj.amountRemaining_unit_value }}"{% endif %}
               {% if fobj.amountRemaining_unit_abbrev %} abbrev="{{ fobj.amountRemaining_unit_abbrev }}"{% endif %}
               >
-              {% if fobj.amountRemaining_text %}{{ fobj.amountRemaining_text }}{% endif %}
+              {% if fobj.amountRemaining_unit_text %}{{ fobj.amountRemaining_unit_text }}{% endif %}
               <unit/>
               {% endif %}
 

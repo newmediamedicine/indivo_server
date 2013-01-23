@@ -1,7 +1,7 @@
 
 from indivo.models import Fact
 from django.db import models
-from indivo.fields import CollaboRhythmCodedValueField, CollaboRhythmValueAndUnitField, CodedValueField, ValueAndUnitField, PharmacyField, ProviderField
+from indivo.fields import CollaboRhythmCodedValueField, CollaboRhythmValueAndUnitField, RecurrenceRuleField, CodedValueField, ValueAndUnitField, PharmacyField, ProviderField
 
 class HealthActionSchedule(Fact):
     name = CollaboRhythmCodedValueField()
@@ -9,5 +9,5 @@ class HealthActionSchedule(Fact):
     dateScheduled = models.DateField()
     dateStart = models.DateField()
     dateEnd = models.DateField(null=True)
-    recurrenceRule = models.CharField(max_length=255, null=True)
+    recurrenceRule = RecurrenceRuleField(null=True)
     instructions = models.CharField(max_length=255, null=True)

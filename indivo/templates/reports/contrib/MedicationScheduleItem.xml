@@ -22,15 +22,21 @@
   {% if fobj.dateEnd %}
   <dateEnd>{{ fobj.dateEnd|format_iso8601_datetime }}</dateEnd>
   {% endif %}
-  {% if fobj.recurrenceRule %}
-  <recurrenceRule>{{ fobj.recurrenceRule }}</recurrenceRule>
-  {% endif %}
+
+              {% if fobj.recurrenceRule_frequency %}
+            
+            <recurrenceRule>
+            <frequency>{{ fobj.recurrenceRule_frequency }}</value>
+            {% if fobj.recurrenceRule_interval %} <interval>{{ fobj.recurrenceRule_interval }}</interval>{% endif %}
+            {% if fobj.recurrenceRule_count %} <count>{{ fobj.recurrenceRule_count }}</count>{% endif %}
+            </recurrenceRule>
+            {% endif %}
 
             <dose>
 
             {% if fobj.dose_value %} <value>{{ fobj.dose_value }}</value>{% endif %}
-            {% if fobj.dose_value %} <textValue>{{ fobj.dose_textValue }}</textValue>{% endif %}
-            {% if fobj.dose_unit %}
+            {% if fobj.dose_textValue %} <textValue>{{ fobj.dose_textValue }}</textValue>{% endif %}
+            {% if fobj.dose_unit_text or fobj.dose_unit_type or fobj.dose_unit_value or fobj.dose_unit_abbrev %}
 
               
               <unit
@@ -38,7 +44,7 @@
               {% if fobj.dose_unit_value %} value="{{ fobj.dose_unit_value }}"{% endif %}
               {% if fobj.dose_unit_abbrev %} abbrev="{{ fobj.dose_unit_abbrev }}"{% endif %}
               >
-              {% if fobj.dose_text %}{{ fobj.dose_text }}{% endif %}
+              {% if fobj.dose_unit_text %}{{ fobj.dose_unit_text }}{% endif %}
               <unit/>
               
 

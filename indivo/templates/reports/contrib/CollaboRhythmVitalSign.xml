@@ -1,6 +1,56 @@
 
 {% load template_utils %}
-<VitalSign xmlns="http://indivo.org/vocab/xml/documents#">
+<CollaboRhythmVitalSign xmlns="http://indivo.org/vocab/xml/documents#">
       
-</VitalSign>
+            <name
+            {% if fobj.name_type %} type="{{ fobj.name_type }}"{% endif %}
+            {% if fobj.name_value %} value="{{ fobj.name_value }}"{% endif %}
+            {% if fobj.name_abbrev %} abbrev="{{ fobj.name_abbrev }}"{% endif %}
+            >
+            {% if fobj.name_text %}{{ fobj.name_text }}{% endif %}
+            </name>
+            
+  {% if fobj.measuredBy %}
+  <measuredBy>{{ fobj.measuredBy }}</measuredBy>
+  {% endif %}
+
+  <dateMeasuredStart>{{ fobj.dateMeasuredStart|format_iso8601_datetime }}</dateMeasuredStart>
+  
+  {% if fobj.dateMeasuredEnd %}
+  <dateMeasuredEnd>{{ fobj.dateMeasuredEnd|format_iso8601_datetime }}</dateMeasuredEnd>
+  {% endif %}
+
+            <result>
+
+            {% if fobj.result_value %} <value>{{ fobj.result_value }}</value>{% endif %}
+            {% if fobj.result_textValue %} <textValue>{{ fobj.result_textValue }}</textValue>{% endif %}
+            {% if fobj.result_unit_text or fobj.result_unit_type or fobj.result_unit_value or fobj.result_unit_abbrev %}
+
+              
+              <unit
+              {% if fobj.result_unit_type %} type="{{ fobj.result_unit_type }}"{% endif %}
+              {% if fobj.result_unit_value %} value="{{ fobj.result_unit_value }}"{% endif %}
+              {% if fobj.result_unit_abbrev %} abbrev="{{ fobj.result_unit_abbrev }}"{% endif %}
+              >
+              {% if fobj.result_unit_text %}{{ fobj.result_unit_text }}{% endif %}
+              <unit/>
+              
+
+            {% endif %}
+            </result>
+            
+  {% if fobj.site %}
+  <site>{{ fobj.site }}</site>
+  {% endif %}
+  {% if fobj.position %}
+  <position>{{ fobj.position }}</position>
+  {% endif %}
+  {% if fobj.technique %}
+  <technique>{{ fobj.technique }}</technique>
+  {% endif %}
+  {% if fobj.comments %}
+  <comments>{{ fobj.comments }}</comments>
+  {% endif %}
+
+</CollaboRhythmVitalSign>
   

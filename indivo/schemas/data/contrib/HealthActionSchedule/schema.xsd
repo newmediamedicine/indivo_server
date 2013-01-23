@@ -25,7 +25,7 @@
 
 	<xs:complexType name="RecurrenceRule">
 		<xs:sequence>
-			<xs:element name="frequency" type="indivo:CollaboRhythmCodedValue" minOccurs="1" maxOccurs="1">
+			<xs:element name="frequency" type="xs:string" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation xml:lang="en">
 						Frequency of recurrence
@@ -40,7 +40,7 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="interval" type="indivo:CollaboRhythmCodedValue" minOccurs="0" maxOccurs="1">
+			<xs:element name="interval" type="xs:integer" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation xml:lang="en">
 						Interval of recurrence

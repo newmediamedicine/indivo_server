@@ -104,6 +104,28 @@ class CollaboRhythmValueAndUnitField(DummyField):
         '_unit': (CollaboRhythmCodedValueField, {}),
         }
 
+class RecurrenceRuleField(DummyField):
+    """ A field for representing data elements for recurring schedules.
+
+    Creating a RecurrenceRuleField named 'recurrenceRule', for example, will (under the hood) create the fields:
+
+    * ``recurrenceRule_frequency``, identifies the type of recurrence rule
+    * ``recurrenceRule_interval``, positive integer representing how often the recurrence rule repeats
+    * ``recurrenceRule_count``, number of times the item will recur
+
+    When describing instances of your model (either when defining a
+    :ref:`transform output <transform-output-types>` or when referencing fields using
+    :ref:`the Indivo Query API <queryable-fields>`), you must refer to these field names, not the original
+    ``recurrenceRule`` field name.
+
+    TODO: move to a "contrib" folder for contributed fields
+    """
+    replacements = {
+        '_frequency': (models.CharField, {'max_length':255}),
+        '_interval': (models.IntegerField, {'null':True}),
+        '_count': (models.IntegerField, {'null':True}),
+        }
+
 class ValueRangeField(DummyField):
     """ A field for representing a range of values.
 
