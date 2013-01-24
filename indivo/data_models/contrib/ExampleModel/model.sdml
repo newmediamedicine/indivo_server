@@ -1,0 +1,6 @@
+{
+    "__modelname__": "ExampleModel",
+    "name": "CollaboRhythmCodedValue",
+    "startDate": "Date",
+    "notes": "String"
+}
