@@ -53,7 +53,7 @@
             {% if fobj.<xsl:value-of select="$childName"/>_frequency %}
             </xsl:if>
             &lt;<xsl:value-of select="$childName"/>&gt;
-            &lt;frequency&gt;{{ fobj.<xsl:value-of select="$childName"/>_frequency }}&lt;/value&gt;
+            &lt;frequency&gt;{{ fobj.<xsl:value-of select="$childName"/>_frequency }}&lt;/frequency&gt;
             {% if fobj.<xsl:value-of select="$childName"/>_interval %} &lt;interval&gt;{{ fobj.<xsl:value-of select="$childName"/>_interval }}&lt;/interval&gt;{% endif %}
             {% if fobj.<xsl:value-of select="$childName"/>_count %} &lt;count&gt;{{ fobj.<xsl:value-of select="$childName"/>_count }}&lt;/count&gt;{% endif %}
             &lt;/<xsl:value-of select="$childName"/>&gt;

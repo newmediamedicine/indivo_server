@@ -23,10 +23,10 @@
   <dateEnd>{{ fobj.dateEnd|format_iso8601_datetime }}</dateEnd>
   {% endif %}
 
-              {% if fobj.recurrenceRule_frequency %}
+            {% if fobj.recurrenceRule_frequency %}
             
             <recurrenceRule>
-            <frequency>{{ fobj.recurrenceRule_frequency }}</value>
+            <frequency>{{ fobj.recurrenceRule_frequency }}</frequency>
             {% if fobj.recurrenceRule_interval %} <interval>{{ fobj.recurrenceRule_interval }}</interval>{% endif %}
             {% if fobj.recurrenceRule_count %} <count>{{ fobj.recurrenceRule_count }}</count>{% endif %}
             </recurrenceRule>
