@@ -1,0 +1,9 @@
+{
+    "name": "IndivoAccountCreator Chrome App",
+    "description" : "IndivoAccountCreator is a tool for creating accounts and loading data",
+    "author" : "John Moore, Scott Gilroy. MIT Media Lab",
+    "id" : "indivoAccountCreator@apps.indivo.org",
+    "version" : "2.0.0",
+    "indivo_version": "2.0.0",
+    "ui_app": true
+}
