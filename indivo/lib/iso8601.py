@@ -4,6 +4,7 @@
 """
 
 from datetime import datetime, time
+import dateutil.parser
 
 # the iso8601 date formats we accept and produce, and nothing else for now
 ISO8601_UTC_DATETIME_FORMAT_MICRO = "%Y-%m-%dT%H:%M:%S.%fZ"
@@ -16,7 +17,9 @@ def parse_utc_date(datestring):
     parse a date expected to be in UTC format, either a datetime or a date only
     """
     try:
-        return datetime.strptime(datestring, ISO8601_UTC_DATE_FORMAT)
+        d = dateutil.parser.parse(datestring)
+        d = d.astimezone(dateutil.tz.tzutc())
+        return d
     except ValueError:
         try:
             return datetime.strptime(datestring, ISO8601_UTC_DATETIME_FORMAT_MICRO)
