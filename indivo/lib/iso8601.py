@@ -18,7 +18,8 @@ def parse_utc_date(datestring):
     """
     try:
         d = dateutil.parser.parse(datestring)
-        d = d.astimezone(dateutil.tz.tzutc())
+        if d.tzinfo:
+            d = d.astimezone(dateutil.tz.tzutc())
         return d
     except ValueError:
         try:
