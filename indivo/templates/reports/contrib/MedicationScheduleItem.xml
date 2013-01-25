@@ -45,7 +45,7 @@
               {% if fobj.dose_unit_abbrev %} abbrev="{{ fobj.dose_unit_abbrev }}"{% endif %}
               >
               {% if fobj.dose_unit_text %}{{ fobj.dose_unit_text }}{% endif %}
-              <unit/>
+              </unit>
               
 
             {% endif %}

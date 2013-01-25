@@ -20,8 +20,7 @@
   <dateAdministered>{{ fobj.dateAdministered|format_iso8601_datetime }}</dateAdministered>
   {% endif %}
 
-              {% if fobj.amountAdministered_value or
-              fobj.amountAdministered_textValue%}
+              {% if fobj.amountAdministered_value or fobj.amountAdministered_textValue%}
             
             <amountAdministered>
 
@@ -36,15 +35,14 @@
               {% if fobj.amountAdministered_unit_abbrev %} abbrev="{{ fobj.amountAdministered_unit_abbrev }}"{% endif %}
               >
               {% if fobj.amountAdministered_unit_text %}{{ fobj.amountAdministered_unit_text }}{% endif %}
-              <unit/>
-              {% endif %}
+              </unit>
+              
 
             {% endif %}
             </amountAdministered>
             {% endif %}
 
-              {% if fobj.amountRemaining_value or
-              fobj.amountRemaining_textValue%}
+              {% if fobj.amountRemaining_value or fobj.amountRemaining_textValue%}
             
             <amountRemaining>
 
@@ -59,8 +57,8 @@
               {% if fobj.amountRemaining_unit_abbrev %} abbrev="{{ fobj.amountRemaining_unit_abbrev }}"{% endif %}
               >
               {% if fobj.amountRemaining_unit_text %}{{ fobj.amountRemaining_unit_text }}{% endif %}
-              <unit/>
-              {% endif %}
+              </unit>
+              
 
             {% endif %}
             </amountRemaining>

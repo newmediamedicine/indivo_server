@@ -41,7 +41,7 @@
               {% if fobj.amountOrdered_unit_abbrev %} abbrev="{{ fobj.amountOrdered_unit_abbrev }}"{% endif %}
               >
               {% if fobj.amountOrdered_unit_text %}{{ fobj.amountOrdered_unit_text }}{% endif %}
-              <unit/>
+              </unit>
               
 
             {% endif %}

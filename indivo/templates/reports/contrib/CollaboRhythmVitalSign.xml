@@ -33,7 +33,7 @@
               {% if fobj.result_unit_abbrev %} abbrev="{{ fobj.result_unit_abbrev }}"{% endif %}
               >
               {% if fobj.result_unit_text %}{{ fobj.result_unit_text }}{% endif %}
-              <unit/>
+              </unit>
               
 
             {% endif %}

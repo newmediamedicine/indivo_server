@@ -41,7 +41,7 @@
               {% if fobj.<xsl:value-of select="$childName"/>_unit_abbrev %} abbrev="{{ fobj.<xsl:value-of select="$childName"/>_unit_abbrev }}"{% endif %}
               &gt;
               {% if fobj.<xsl:value-of select="$childName"/>_unit_text %}{{ fobj.<xsl:value-of select="$childName"/>_unit_text }}{% endif %}
-              &lt;unit/&gt;
+              &lt;/unit&gt;
               <xsl:if test="uint/@minOccurs='0'">{% endif %}</xsl:if>
 
             {% endif %}

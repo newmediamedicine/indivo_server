@@ -32,7 +32,7 @@
               {% if fobj.amountFilled_unit_abbrev %} abbrev="{{ fobj.amountFilled_unit_abbrev }}"{% endif %}
               >
               {% if fobj.amountFilled_unit_text %}{{ fobj.amountFilled_unit_text }}{% endif %}
-              <unit/>
+              </unit>
               
 
             {% endif %}
