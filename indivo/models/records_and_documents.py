@@ -232,11 +232,21 @@ class Document(Object):
 
   @property
   def relates_to(self):
-    return self.rels_as_doc_0.values('relationship__type').annotate(count=Count('relationship'))
+    relates_to = self.rels_as_doc_0.values('relationship__type').annotate(count=Count('relationship'))
+    for relation in relates_to:
+      docs = self.rels_as_doc_0.filter(relationship__type=relation['relationship__type']).values('document_1_id')
+      relation['docs'] = docs
+
+    return relates_to
 
   @property
   def is_related_from(self):
-    return self.rels_as_doc_1.values('relationship__type').annotate(count=Count('relationship'))
+    is_related_from = self.rels_as_doc_1.values('relationship__type').annotate(count=Count('relationship'))
+    for relation in is_related_from:
+      docs = self.rels_as_doc_1.filter(relationship__type=relation['relationship__type']).values('document_0_id')
+      relation['docs'] = docs
+
+    return is_related_from
 
   #related_docs = models.ManyToManyField('self', through='DocumentRels', symmetrical=False)
 
