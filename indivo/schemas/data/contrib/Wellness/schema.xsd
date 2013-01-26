@@ -1,0 +1,14 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://indivo.org/vocab/xml/documents#" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Wellness">
+    <xs:complexType>
+      <xs:sequence>		
+        <xs:element type="xs:dateTime" name="measurementDate" maxOccurs="1" minOccurs="1"/>
+		<xs:element type="xs:string" name="reportedBy" maxOccurs="1" minOccurs="1"/>		
+		<xs:element type="xs:dateTime" name="dateReported" maxOccurs="1" minOccurs="1"/>
+        <xs:element type="xs:int" name="numberOfStepsTaken" maxOccurs="1" minOccurs="1"/>
+        <xs:element type="xs:float" name="numberOfHoursSlept" maxOccurs="1" minOccurs="1"/>
+        <xs:element type="xs:short" name="numberOfTimesAwakened" maxOccurs="1" minOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

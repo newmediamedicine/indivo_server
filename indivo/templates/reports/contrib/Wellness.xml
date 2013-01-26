@@ -1,0 +1,11 @@
+
+{% load template_utils %}
+<Wellness xmlns="http://indivo.org/vocab/xml/documents#">
+  	<measurementDate>{{ fobj.measurementDate|format_iso8601_datetime }}</measurementDate>
+	<reportedBy>{{ fobj.reportedBy }}</reportedBy>
+        <dateReported>{{ fobj.dateReported|format_iso8601_datetime }}</dateReported>
+        <numberOfStepsTaken>{{ fobj.numberOfStepsTaken }}</numberOfStepsTaken>
+	<numberOfHoursSlept>{{ fobj.numberOfHoursSlept }}</numberOfHoursSlept>
+	<numberOfTimesAwakened>{{ fobj.numberOfTimesAwakened }}</numberOfTimesAwakened>
+</Wellness>
+  

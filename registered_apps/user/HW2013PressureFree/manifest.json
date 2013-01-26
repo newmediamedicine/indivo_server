@@ -1,0 +1,17 @@
+{
+  "name" : "HW2013PressureFree",
+  "description" : "Background App for syncing fitbit",
+  "author" : "Surya Nayayana",
+  "id" : "HW2013PressureFree@apps.indivo.org",
+  "version" : "2.0.0",
+  "smart_version": "0.4",
+
+  "mode" : "background",	
+  "scope": "record",
+  "has_ui": false,
+  "frameable": false,
+
+  "icon" :  "/jmvc/ui/resources/images/app_icons_32/indivo_connector.png",
+  "index": "http://junk/start_auth",
+  "oauth_callback_url": "http://junk/after_auth"
+}
