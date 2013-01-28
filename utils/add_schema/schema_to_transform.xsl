@@ -12,7 +12,19 @@
               <xsl:variable name="childName" select="@name"/>
               <xsl:choose>
 
-                <xsl:when test="(@type = 'indivo:CollaboRhythmCodedValue' or @type = 'indivo:CodedValue') and @minOccurs='0'">
+                <xsl:when test="(@type = 'indivo:CodedValue')">
+                  <xslout:if test="indivodoc:{$childName}/indivodoc:identifier">
+                    <Field name="{$childName}_identifier"><xslout:value-of select='indivodoc:{$childName}/indivodoc:identifier'/></Field>
+                  </xslout:if>
+                  <xslout:if test="indivodoc:{$childName}/indivodoc:title">
+                    <Field name="{$childName}_title"><xslout:value-of select='indivodoc:{$childName}/indivodoc:title' /></Field>
+                  </xslout:if>
+                  <xslout:if test="indivodoc:{$childName}/indivodoc:system">
+                    <Field name="{$childName}_system"><xslout:value-of select='indivodoc:{$childName}/indivodoc:system' /></Field>
+                  </xslout:if>
+                </xsl:when>
+
+                <xsl:when test="(@type = 'indivo:CollaboRhythmCodedValue') and @minOccurs='0'">
                   <xslout:if test="indivodoc:{$childName}">
                     <Field name="{$childName}_text"><xslout:value-of select='indivodoc:{$childName}/text()' /></Field>
                     <xslout:if test="indivodoc:{$childName}/@type">
@@ -27,7 +39,7 @@
                   </xslout:if>
                 </xsl:when>
 
-                <xsl:when test="(@type = 'indivo:CollaboRhythmCodedValue' or @type = 'indivo:CodedValue')">
+                <xsl:when test="(@type = 'indivo:CollaboRhythmCodedValue')">
                   <Field name="{$childName}_text"><xslout:value-of select='indivodoc:{$childName}/text()' /></Field>
                   <xslout:if test="indivodoc:{$childName}/@type">
                     <Field name="{$childName}_type"><xslout:value-of select='indivodoc:{$childName}/@type'/></Field>

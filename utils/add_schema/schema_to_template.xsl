@@ -9,7 +9,20 @@
       <xsl:for-each select="xs:complexType[@name=$name]/xs:sequence/xs:element">
         <xsl:variable name="childName" select="@name"/>
         <xsl:choose>
-          <xsl:when test="(@type = 'indivo:CollaboRhythmCodedValue' or @type = 'indivo:CodedValue')">
+
+          <xsl:when test="@type = 'indivo:CodedValue'">
+            <xsl:if test="@minOccurs='0'">
+            {% if fobj.<xsl:value-of select="$childName"/>_identifier or fobj.<xsl:value-of select="$childName"/>_title or fobj.<xsl:value-of select="$childName"/>_system %}
+            </xsl:if>
+            &lt;<xsl:value-of select="$childName"/>&gt;
+            {% if fobj.<xsl:value-of select="$childName"/>_identifier %} &lt;identifier&gt;{{ fobj.<xsl:value-of select="$childName"/>_identifier }}&lt;/identifier&gt;{% endif %}
+            {% if fobj.<xsl:value-of select="$childName"/>_title %} &lt;title&gt;{{ fobj.<xsl:value-of select="$childName"/>_title }}&lt;/title&gt;{% endif %}
+            {% if fobj.<xsl:value-of select="$childName"/>_system %} &lt;system&gt;{{ fobj.<xsl:value-of select="$childName"/>_system }}&lt;/system&gt;{% endif %}
+            &lt;/<xsl:value-of select="$childName"/>&gt;
+            <xsl:if test="@minOccurs='0'">{% endif %}</xsl:if>
+          </xsl:when>
+
+          <xsl:when test="@type = 'indivo:CollaboRhythmCodedValue'">
             <xsl:if test="@minOccurs='0'">
             {% if fobj.<xsl:value-of select="$childName"/>_text or fobj.<xsl:value-of select="$childName"/>_type or fobj.<xsl:value-of select="$childName"/>_value or fobj.<xsl:value-of select="$childName"/>_abbrev %}
             </xsl:if>
@@ -22,6 +35,7 @@
             &lt;/<xsl:value-of select="$childName"/>&gt;
             <xsl:if test="@minOccurs='0'">{% endif %}</xsl:if>
           </xsl:when>
+
           <xsl:when test="(@type = 'indivo:CollaboRhythmValueAndUnit' or @type = 'indivo:ValueAndUnit')">
             <xsl:if test="@minOccurs='0'">
               {% if fobj.<xsl:value-of select="$childName"/>_value or fobj.<xsl:value-of select="$childName"/>_textValue%}
@@ -48,6 +62,7 @@
             &lt;/<xsl:value-of select="$childName"/>&gt;
             <xsl:if test="@minOccurs='0'">{% endif %}</xsl:if>
           </xsl:when>
+
           <xsl:when test="@type = 'indivo:RecurrenceRule'">
             <xsl:if test="@minOccurs='0'">
             {% if fobj.<xsl:value-of select="$childName"/>_frequency %}
@@ -59,8 +74,10 @@
             &lt;/<xsl:value-of select="$childName"/>&gt;
             <xsl:if test="@minOccurs='0'">{% endif %}</xsl:if>
           </xsl:when>
+
           <xsl:otherwise>
             <xsl:if test="@minOccurs='0'">  {% if fobj.<xsl:value-of select="$childName"/> %}</xsl:if>
+            <!--TODO: Handle types with and without namespace prefix; that is, type="xs:dateTime" currently works but type="dateTime" is ignored -->
   &lt;<xsl:value-of select="$childName"/>&gt;{{ fobj.<xsl:value-of select="$childName"/><xsl:if test="@type = 'xs:dateTime'">|format_iso8601_datetime</xsl:if><xsl:if test="@type = 'xs:date'">|format_iso8601_date</xsl:if><xsl:if test="@type = 'xs:boolean'">|lower</xsl:if> }}&lt;/<xsl:value-of select="$childName"/>&gt;
   <xsl:if test="@minOccurs='0'">{% endif %}</xsl:if>
           </xsl:otherwise>

@@ -13,7 +13,13 @@ class ProblemSerializers(DataModelSerializers):
         
         graph = PatientGraph(record)
         graph.addProblemList(queryset.iterator())
-        return graph.toRDF()        
+        return graph.toRDF()
+
+    def to_xml(query, record=None, carenet=None):
+        if not record:
+            record = carenet.record
+
+        return query.render("reports/problem.xml")
 
 class ProblemOptions(DataModelOptions):
     model_class_name = 'Problem'

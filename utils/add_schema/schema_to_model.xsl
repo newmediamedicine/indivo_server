@@ -11,7 +11,8 @@ class <xsl:value-of select="$name"/>(Fact):
 <xsl:for-each select="xs:complexType[@name=$name]/xs:sequence/xs:element">
     <xsl:text>    </xsl:text>
     <xsl:value-of select="@name"/> = <xsl:choose>
-      <xsl:when test="@type = 'indivo:CollaboRhythmCodedValue' or @type = 'indivo:CodedValue'">CollaboRhythmCodedValueField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
+      <xsl:when test="@type = 'indivo:CodedValue'">CodedValueField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
+      <xsl:when test="@type = 'indivo:CollaboRhythmCodedValue'">CollaboRhythmCodedValueField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
       <xsl:when test="@type = 'indivo:CollaboRhythmValueAndUnit' or @type = 'indivo:ValueAndUnit'">CollaboRhythmValueAndUnitField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
       <xsl:when test="@type = 'indivo:RecurrenceRule'">RecurrenceRuleField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
       <xsl:when test="@type = 'xs:date'">models.DateField(<xsl:if test="@minOccurs='0'">null=True</xsl:if>)</xsl:when>
