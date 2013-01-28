@@ -2,9 +2,15 @@
 {% load template_utils %}<?xml version="1.0" encoding="utf-8" ?>
 <Message id="{{message.id}}">
   <sender>{{message.sender.email}}</sender>
+  {% if message.recipient %}<recipient>{{message.recipient.email}}</recipient>{% endif %}
   <received_at>{{message.received_at|format_iso8601_datetime}}</received_at>
-  {% if message.read_at %}<read_at>{{message.read_at|format_iso8601_datetime}}</read_at>{% endif %}
-  {% if message.archived_at %}<archived_at>{{message.archived_at|format_iso8601_datetime}}</archived_at>{% endif %}
+  {% if sent_view %}
+    {% if message.sent_read_at %}<read_at>{{message.sent_read_at|format_iso8601_datetime}}</read_at>{% endif %}
+    {% if message.sent_archived_at %}<archived_at>{{message.sent_archived_at|format_iso8601_datetime}}</archived_at>{% endif %}
+  {% else %}
+    {% if message.read_at %}<read_at>{{message.read_at|format_iso8601_datetime}}</read_at>{% endif %}
+    {% if message.archived_at %}<archived_at>{{message.archived_at|format_iso8601_datetime}}</archived_at>{% endif %}
+  {% endif %}
   <subject>{{message.subject}}</subject>
   <body>{{message.body}}</body>
   <severity>{{message.severity}}</severity>
