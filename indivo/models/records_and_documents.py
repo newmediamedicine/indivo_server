@@ -85,7 +85,6 @@ class Record(Object):
     for account in self.get_accounts_to_notify():
       # FIXME: does the account have the right to see notifications on this record?
 
-      account.notify_account_of_new_message()
       Message.objects.create( account             = account, 
                               about_record        = self, 
                               external_identifier = external_identifier,
@@ -96,6 +95,8 @@ class Record(Object):
                               body_type           = body_type,
                               num_attachments     = num_attachments,
                               severity            = severity)
+      
+      account.notify_account_of_new_message()
 
   def notify(self, pha, content, document_id=None, app_url=None):
     # make sure that the document belongs to the record

@@ -63,7 +63,7 @@ def account_send_message(request, account):
   account.notify_account_of_new_message()
   return render_template('_message', {'message' : message})
 
-@transaction.commit_manually
+@transaction.commit_on_success
 @handle_integrity_error('Duplicate external id. Each message requires a unique message_id')
 def send_account_message(request, account):
     """
@@ -88,22 +88,17 @@ def send_account_message(request, account):
     Will return :http:statuscode:`200` on success, :http:statuscode:`400` if the
     passed *message_id* is a duplicate.
     """
-    try:
-        message = Message.objects.create(
-            account             = account,
-            sender              = request.principal,
-            recipient           = account,
-            external_identifier = request.POST.get('message_id', None),
-            subject             = _get_subject(request),
-            body                = request.POST.get('body', "[no body]"),
-            severity            = request.POST.get('severity', 'low'))
-        account.notify_account_of_new_message()
-    except IntegrityError: # Occurs if the same sender uses the same message_id for different messages.
-        transaction.rollback()
-        return HttpResponseBadRequest('Duplicate external id: %s. Each message requires a unique message_id'%message_id)
-    else:
-        transaction.commit()
-        return render_template('_message', {'message' : message})
+#    try:
+    message = Message.objects.create(
+        account             = account,
+        sender              = request.principal,
+        recipient           = account,
+        external_identifier = request.POST.get('message_id', None),
+        subject             = _get_subject(request),
+        body                = request.POST.get('body', "[no body]"),
+        severity            = request.POST.get('severity', 'low'))
+    account.notify_account_of_new_message()
+    return render_template('_message', {'message' : message})
 
 @transaction.commit_on_success
 @handle_integrity_error('Duplicate external id. Each message requires a unique message_id')
@@ -140,15 +135,17 @@ def record_send_message(request, record, message_id):
   
   """
 
-  record.send_message(
-    external_identifier = message_id, 
-    sender              = request.principal.effective_principal,
-    subject             = _get_subject(request),
-    body                = request.POST.get('body',    '[no body]'),
-    body_type           = request.POST.get('body_type',    'plaintext'),
-    num_attachments     = request.POST.get('num_attachments', 0),
-    severity            = request.POST.get('severity', 'low'))
-  
+  try:
+    record.send_message(
+        external_identifier = message_id, 
+        sender              = request.principal.effective_principal,
+        subject             = _get_subject(request),
+        body                = request.POST.get('body',    '[no body]'),
+        body_type           = request.POST.get('body_type',    'plaintext'),
+        num_attachments     = request.POST.get('num_attachments', 0),
+        severity            = request.POST.get('severity', 'low'))
+  except ValueError, e:
+    return HttpResponseBadRequest(e)
   return DONE
 
 @transaction.commit_on_success
@@ -172,8 +169,16 @@ def record_message_attach(request, record, message_id, attachment_num):
   # there may be more than one message here
   messages = Message.objects.filter(about_record = record, external_identifier = message_id)
   
-  for message in messages:
-    message.add_attachment(attachment_num, request.raw_post_data)
+  if len(messages) == 0:
+      return HttpResponseBadRequest("Message not found")
+  
+  try:
+    for message in messages:
+      message.add_attachment(attachment_num, request.raw_post_data)
+  except IntegrityError as e:
+      raise e
+  except Exception as e:
+    return HttpResponseBadRequest(e)
 
   return DONE
 
