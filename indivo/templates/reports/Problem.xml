@@ -1,0 +1,22 @@
+
+{% load template_utils %}
+<Problem xmlns="http://indivo.org/vocab/xml/documents#">
+        {% if fobj.startDate %}
+  <startDate>{{ fobj.startDate|format_iso8601_datetime }}</startDate>
+  {% endif %}
+  {% if fobj.endDate %}
+  <endDate>{{ fobj.endDate|format_iso8601_datetime }}</endDate>
+  {% endif %}
+
+            <name>
+            {% if fobj.name_title %} <title>{{ fobj.name_title }}</title>{% endif %}
+            {% if fobj.name_system %} <system>{{ fobj.name_system }}</system>{% endif %}
+            {% if fobj.name_identifier %} <identifier>{{ fobj.name_identifier }}</identifier>{% endif %}
+            </name>
+            
+  {% if fobj.notes %}
+  <notes>{{ fobj.notes }}</notes>
+  {% endif %}
+
+</Problem>
+  
