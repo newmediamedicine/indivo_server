@@ -12,4 +12,4 @@ class CollaboRhythmVitalSign(Fact):
     site = models.CharField(max_length=255, null=True)
     position = models.CharField(max_length=255, null=True)
     technique = models.CharField(max_length=255, null=True)
-    comments = models.CharField(max_length=255, null=True)
+    comments = models.TextField(null=True)
