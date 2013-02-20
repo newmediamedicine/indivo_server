@@ -42,6 +42,7 @@ class HealthActionResultTransform(BaseTransform):
 
         # actions
         actions_node = doc_etree.find(_t('actions'))
-        ret['actions'] = etree.tostring(actions_node, xml_declaration=False)
+        if actions_node:
+            ret['actions'] = etree.tostring(actions_node, xml_declaration=False)
 
         return ret

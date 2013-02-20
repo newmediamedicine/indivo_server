@@ -1,6 +1,6 @@
 
 {% load template_utils %}
-<HealthActionResult xmlns="http://indivo.org/vocab/xml/documents#">
+<HealthActionResult xmlns="http://indivo.org/vocab/xml/documents/healthActionResult#">
       
             <name
             {% if fobj.name_type %} type="{{ fobj.name_type }}"{% endif %}
@@ -20,7 +20,7 @@
   <dateReported>{{ fobj.dateReported|format_iso8601_datetime }}</dateReported>
   {% endif %}
   {% if fobj.actions %}
-  <actions>{{ fobj.actions }}</actions>
+  {% autoescape off %}{{ fobj.actions }}{% endautoescape %}
   {% endif %}
 
 </HealthActionResult>
